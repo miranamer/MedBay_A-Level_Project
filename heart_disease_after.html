@@ -1,0 +1,136 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    canvas {
+	display: block;
+	max-width: 800px;
+	margin: 60px auto;
+
+}
+
+.button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+
+
+
+    
+</style>
+
+
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4" style='color: black;'>Final Predicition</h1>
+    
+    <br>
+
+    
+    
+    
+
+    {% if output == 0 %}
+        <p class="lead" style='color: green;'> You are not likely to get Heart Disease  </p>
+        
+    
+    {% else %}
+        
+        <p class="lead" style='color: red;'> You are likely to get Heart Disease  </p>
+        <a href='https://www.nhs.uk/conditions/coronary-heart-disease/'> <img src='https://www.researchforthefuture.org/wp-content/uploads/2016/05/Heart-disease-logo.png' width=200 height=200> </a>
+        <br>
+        <br>
+        
+
+        <p style='color: black;'>Click the image for advice OR consult your GP</p>
+    {% endif %}
+    
+</div>
+
+<center>
+    <a href='/' class='button-33' role='button'> Go Home!</a>
+    
+    </center>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+
+
+<body>
+    <canvas id="bar-chart" width="400" height="300"></canvas>
+<!-- <canvas id="line-chart" width="400" height="400"></canvas> -->
+</body>
+
+<script>
+
+ Chart.defaults.global.elements.rectangle.backgroundColor = '#FF0000';
+
+var bar_ctx = document.getElementById('bar-chart').getContext('2d');
+
+var purple_orange_gradient = bar_ctx.createLinearGradient(0, 0, 0, 600);
+purple_orange_gradient.addColorStop(0, 'orange');
+purple_orange_gradient.addColorStop(1, 'purple');
+
+var bar_chart = new Chart(bar_ctx, {
+    type: 'bar',
+    data: {
+        labels: {{labels | safe}},
+        datasets: [{
+            label: 'Value Entered',
+            data: {{values | safe}},
+						backgroundColor: purple_orange_gradient,
+						hoverBackgroundColor: purple_orange_gradient,
+						hoverBorderWidth: 3,
+						hoverBorderColor: 'purple'
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+    
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href='/static/style.css' />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/5825ab2eea.js" crossorigin="anonymous"></script>
+          
+        <nav class="site-header sticky-top py-1">
+          <div class="container d-flex flex-column flex-md-row justify-content-between">
+            
+            <a class="py-2 d-none d-md-inline-block" href="#"> MEDBAY </a>
+
+            <a class="py-2" href="/">
+              <i class="fas fa-capsules"></i> Home
+            </a>
+        
+            <a class="py-2 d-none d-md-inline-block" href="/diabetes_pre"> <i class="fas fa-stethoscope"></i> Diabetes Test</a>
+            
+            <a class="py-2 d-none d-md-inline-block" href="/heart_disease_test_before"> <i class="fas fa-heart"></i> Heart Disease Test</a>
+            <a class="py-2 d-none d-md-inline-block" href="/skin_disease_pre"> <i class="fas fa-brain"></i> Brain Tumor Predictor</a>
+            <a class="py-2 d-none d-md-inline-block" href="#"> <i class="fas fa-user-nurse"></i> Med Staff Training</a>
+            <a class="py-2 d-none d-md-inline-block" href="/about"> <i class="fas fa-question"></i> About </a>
+            
+            
+            
+          
+            
+            {% if current_user.is_authenticated %}
+            <a class="py-2 d-none d-md-inline-block" href="#"> {{current_user.username}}  </a>
+            {% endif %}
+            
+            
+            <!-- THESE BELOW ARE TEST PAGES (TEST INDEX W/ ANIMATED BANNER) --> 
+
+            <!--  <a class="py-2 d-none d-md-inline-block" href="/testpage">t1</a> -->
+            <!-- <a class="py-2 d-none d-md-inline-block" href="/testpage2">t2</a> -->
+            
+            {% if current_user.is_authenticated %}
+            <a class="py-2 d-none d-md-inline-block" href="/logout">Logout</a>
+            {% else %}
+            <a class="py-2 d-none d-md-inline-block" href="/signup"> <i class="fas fa-arrow-up"></i> Sign Up</a>
+            <a class="py-2 d-none d-md-inline-block" href="/login"> <i class="fas fa-sign-in-alt"></i> Log In</a>
+            
+            
+            
+            {% endif %}
+
+          </div>
+        </nav>
+
+    </head>
+    <body>
+        
+        {% block content %}
+
+        
+        
+        <header class="w3-container w3-center w3-padding-48 w3-black">
+          <h1 class="w3-xxxlarge"><b>MedBay</b></h1> <img src="https://www.freeiconspng.com/uploads/pills-png-6.png" alt="pills" style="width:50px;height:50px;">
+          <h6> Welcome To MedBay! </h6>
+        </header>
+      
+            <header class="w3-display-container w3-wide" id="home">
+          <img class="w3-image" src="https://images.unsplash.com/photo-1576671081837-49000212a370?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1398&q=80" alt="Fashion Blog" width="1600" height="1060">
+          <div class="w3-display-left w3-padding-large">
+            <h1 class="w3-text-white">MedBay</h1>
+            <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>Get A Diagnosis</b></h1>
+            <h6><a href="about" class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off"> Learn More! </a></h6>
+          </div>
+        </header>
+      
+      
+          <!-- Footer -->
+          <footer class="w3-container w3-padding-30 w3-light-grey w3-center w3-medium">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+            <p>MedBay - 2021 - Medical Diagnoser - NEA</p>
+          </footer>
+            
+            
+            
+            
+        {% endblock %}
+
+        <script src="" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+    <h3 class="text-center display-3 mt-3 mb-3">Result</h3>
+
+    <img src="static/images/{{ image_name }}" height="300px" class="image-responsive align-center" style="display: block; margin-left: auto; margin-right: auto; width: 25%;">
+    
+    {% if pred %}
+    <h4 class="text-left display-5 text-center pt-3">Result: <span style="color:red;">Brain Tumor Found</span></h4> {% else %}
+    <h4 class="text-left display-5 text-center pt-3">Result: <span style="color:green;">No Brain Tumor Found</span></h4> {% endif %}
+
+</div>
+
+
+
+
+{% endblock %}

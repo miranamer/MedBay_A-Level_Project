@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<style>
+
+
+
+.button-37 {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
+  }
+}
+
+.inp {
+  text-align: center;
+  margin: auto;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+
+</style>
+
+<h1 style='text-align: center;'>Brain Tumor Predictor</h1>
+<form id="upload-form" action="{{ url_for('skin_disease_after') }}" method="post" enctype="multipart/form-data">
+    <div class="row mt-5">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 justify-content-center center">
+
+            <h3 class="display-5 text-center">Upload Brain Scan Below: </h3>
+            
+            <label for="file-picker" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i> Upload Image
+            </label>
+
+            <input id="file-picker" type="file" name="file" accept="image/*" class="file-control col-md-6 d-flex justify-content-center inp" style="display: block; margin-left: auto; margin-right: auto; width: 43%;" required>
+            
+            <div id="msg"></div>
+            <div class="mt-5">
+                
+                <button type="submit" class="button-37" id="upload-button" style="display: block; margin-left: auto; margin-right: auto; width: 43%;">Calculate Prediction!</button>
+            </div>
+</form>
+
+
+{% endblock %}

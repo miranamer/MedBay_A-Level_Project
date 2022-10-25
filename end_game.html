@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+{% if message %}
+<h1>{{message}}</h1>
+{% elif test_score %}
+<h1>Your score was {{test_score}}</h1>
+{% endif %}
+
+{% endblock %}
